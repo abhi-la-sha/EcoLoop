@@ -197,10 +197,9 @@ streamlit run dashboard/streamlit_app.py
 
 The dashboard displays baseline vs. optimized energy KPIs, an energy comparison chart, an energy savings donut chart, temperature/PMV comfort gauges, and the AI's recommendations — all read directly from `comparison.json`, with no calculations performed in the dashboard itself.
 
-<img width="956" height="503" alt="Screenshot 2026-07-26 203707" src="https://github.com/user-attachments/assets/9c331cf7-e364-4c89-866a-adf096810d2f" />
-<img width="959" height="503" alt="Screenshot 2026-07-26 203649" src="https://github.com/user-attachments/assets/238f026f-5c51-42c7-9790-7fb43df10812" />
 <img width="958" height="500" alt="Screenshot 2026-07-26 203612" src="https://github.com/user-attachments/assets/fd3de328-13eb-45f0-bccd-5ded50ecc445" />
-
+<img width="959" height="503" alt="Screenshot 2026-07-26 203649" src="https://github.com/user-attachments/assets/238f026f-5c51-42c7-9790-7fb43df10812" />
+<img width="956" height="503" alt="Screenshot 2026-07-26 203707" src="https://github.com/user-attachments/assets/9c331cf7-e364-4c89-866a-adf096810d2f" />
 
 ## Future Improvements
 

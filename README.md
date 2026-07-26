@@ -2,7 +2,7 @@
 
 **AI-powered Building Energy Management System** that closes the loop between an EnergyPlus building simulation and an LLM-based control agent — optimizing HVAC and lighting energy while maintaining occupant comfort, with a quantitative baseline-vs-AI comparison.
 
-> Full technical design, module responsibilities, and diagrams live in [`ARCHITECTURE.md`](./ARCHITECTURE.md).
+> Full technical design, module responsibilities, and diagrams live in `[ARCHITECTURE.md](./ARCHITECTURE.md)`.
 
 ---
 
@@ -24,6 +24,8 @@ Buildings are a major source of energy consumption, and most HVAC systems run on
 - **Presentation-ready dashboard**: `dashboard/streamlit_app.py` renders KPIs, energy charts, comfort gauges, and AI recommendations from `comparison.json` only — no calculations happen in the dashboard.
 - **Config-driven limits**: All thresholds (comfort range, PMV range, HVAC setpoint bounds, occupancy levels) live in YAML, not hardcoded in modules.
 
+
+
 ## System Workflow
 
 ```mermaid
@@ -44,7 +46,9 @@ flowchart TD
     CMP --> DASH[dashboard/streamlit_app.py]
 ```
 
-See [`ARCHITECTURE.md`](./ARCHITECTURE.md) for the detailed sequence diagrams, prompt engineering strategy, and per-module design rationale.
+
+
+See `[ARCHITECTURE.md](./ARCHITECTURE.md)` for the detailed sequence diagrams, prompt engineering strategy, and per-module design rationale.
 
 ## Project Structure
 
@@ -84,33 +88,38 @@ eco-loop/
 └── ARCHITECTURE.md
 ```
 
+
+
 ## Technology Stack
 
-| Layer | Technology |
-|---|---|
-| Building simulation | EnergyPlus |
-| Backend | Python 3.11 |
-| LLM provider | Ollama (Qwen2.5) |
-| Config format | YAML (`PyYAML`) |
-| Dashboard | Streamlit |
-| Testing | pytest |
-| HTTP client | requests |
+
+| Layer               | Technology       |
+| ------------------- | ---------------- |
+| Building simulation | EnergyPlus       |
+| Backend             | Python 3.11      |
+| LLM provider        | Ollama (Qwen2.5) |
+| Config format       | YAML (`PyYAML`)  |
+| Dashboard           | Streamlit        |
+| Testing             | pytest           |
+| HTTP client         | requests         |
+
+
+
 
 ## Installation
 
 1. Clone or download this repository.
 2. Create and activate a virtual environment:
-
-   ```powershell
+  ```powershell
    python -m venv .venv
    .venv\Scripts\Activate.ps1
-   ```
-
+  ```
 3. Install dependencies:
-
-   ```powershell
+  ```powershell
    pip install -r requirements.txt
-   ```
+  ```
+
+
 
 ## Configuration
 
@@ -118,35 +127,47 @@ All runtime settings live in `config/` as YAML files.
 
 ### `config/simulation.yaml`
 
-| Key | Description |
-|---|---|
-| `energyplus_path` | Path to the EnergyPlus executable |
-| `idf_path` | Path to the building IDF file |
-| `weather_path` | Path to the weather EPW file |
-| `output_directory` | Directory for simulation outputs |
-| `demo_mode` | When `true`, use prerecorded sensor snapshots instead of live EnergyPlus |
-| `demo_snapshot_directory` | Directory for demo snapshot JSON files |
-| `max_retry` | Maximum retry attempts on simulation failure |
-| `timestep_interval` | Control loop interval in minutes |
+
+| Key                       | Description                                                              |
+| ------------------------- | ------------------------------------------------------------------------ |
+| `energyplus_path`         | Path to the EnergyPlus executable                                        |
+| `idf_path`                | Path to the building IDF file                                            |
+| `weather_path`            | Path to the weather EPW file                                             |
+| `output_directory`        | Directory for simulation outputs                                         |
+| `demo_mode`               | When `true`, use prerecorded sensor snapshots instead of live EnergyPlus |
+| `demo_snapshot_directory` | Directory for demo snapshot JSON files                                   |
+| `max_retry`               | Maximum retry attempts on simulation failure                             |
+| `timestep_interval`       | Control loop interval in minutes                                         |
+
+
+
 
 ### `config/building.yaml`
 
-| Key | Description |
-|---|---|
-| `min_temperature` / `max_temperature` | Acceptable indoor temperature range (°C) |
-| `min_pmv` / `max_pmv` | Acceptable PMV comfort range |
-| `occupancy_threshold` | Boundaries for low/medium occupancy |
-| `hvac_limits` | Min/max cooling and heating setpoint bounds |
+
+| Key                                   | Description                                 |
+| ------------------------------------- | ------------------------------------------- |
+| `min_temperature` / `max_temperature` | Acceptable indoor temperature range (°C)    |
+| `min_pmv` / `max_pmv`                 | Acceptable PMV comfort range                |
+| `occupancy_threshold`                 | Boundaries for low/medium occupancy         |
+| `hvac_limits`                         | Min/max cooling and heating setpoint bounds |
+
+
+
 
 ### `config/llm.yaml`
 
-| Key | Description |
-|---|---|
-| `provider` | LLM provider (`ollama`) |
-| `model` | Model name (`qwen2.5`) |
-| `temperature` | Sampling temperature |
-| `max_tokens` | Maximum response tokens |
-| `timeout` | Request timeout in seconds |
+
+| Key           | Description                |
+| ------------- | -------------------------- |
+| `provider`    | LLM provider (`ollama`)    |
+| `model`       | Model name (`qwen2.5`)     |
+| `temperature` | Sampling temperature       |
+| `max_tokens`  | Maximum response tokens    |
+| `timeout`     | Request timeout in seconds |
+
+
+
 
 ## How to Run
 
@@ -164,6 +185,8 @@ Run the test suite:
 python -m pytest tests/test_config.py -v
 ```
 
+
+
 ## Dashboard & Results
 
 Launch the dashboard to visualize the latest `results/comparison.json`:
@@ -174,9 +197,6 @@ streamlit run dashboard/streamlit_app.py
 
 The dashboard displays baseline vs. optimized energy KPIs, an energy comparison chart, an energy savings donut chart, temperature/PMV comfort gauges, and the AI's recommendations — all read directly from `comparison.json`, with no calculations performed in the dashboard itself.
 
-<img width="956" height="503" alt="Screenshot 2026-07-26 203707" src="https://github.com/user-attachments/assets/3076addd-af0a-4145-980b-00a198d4694e" />
-<img width="959" height="503" alt="Screenshot 2026-07-26 203649" src="https://github.com/user-attachments/assets/49ccf22d-2465-45c2-bf09-871718ae6799" />
-<img width="958" height="500" alt="Screenshot 2026-07-26 203612" src="https://github.com/user-attachments/assets/1a672cbd-bea0-47a8-a036-52f3ecf29dba" />
 
 
 ## Future Improvements
@@ -186,3 +206,4 @@ The dashboard displays baseline vs. optimized energy KPIs, an energy comparison 
 - Multi-building and multi-zone optimization.
 - Persisting historical runs to a database for trend analysis across sessions.
 - REST API layer for integration with external building management systems.
+

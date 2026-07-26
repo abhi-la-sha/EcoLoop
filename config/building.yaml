@@ -1,0 +1,15 @@
+
+min_temperature: 22.0
+max_temperature: 25.0
+min_pmv: -0.5
+max_pmv: 0.5
+
+occupancy_threshold:
+  low_max: 5
+  medium_max: 15
+
+hvac_limits:
+  cooling_min: 22.0
+  cooling_max: 28.0
+  heating_min: 18.0
+  heating_max: 24.0

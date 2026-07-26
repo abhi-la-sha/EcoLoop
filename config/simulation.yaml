@@ -1,0 +1,8 @@
+energyplus_path: "C:/EnergyPlusV25-2-0/energyplus.exe"
+idf_path: "energyplus/building.idf"
+weather_path: "energyplus/weather.epw"
+output_directory: "results"
+demo_mode: false
+demo_snapshot_directory: "results/demo_snapshots"
+max_retry: 1
+timestep_interval: 15

@@ -1,0 +1,6 @@
+
+provider: "ollama"
+model: "qwen2.5"
+temperature: 0.2
+max_tokens: 512
+timeout: 60

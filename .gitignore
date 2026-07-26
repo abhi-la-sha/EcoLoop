@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.eggs/
+dist/
+build/
+.venv/
+venv/
+.env
+
+# EcoLoop runtime outputs
+logs/
+results/
+!results/.gitkeep
+!results/baseline/simulation_summary.json
+!results/optimized/simulation_summary.json
+!results/comparison.json
+!results/controller_actions.json
+
+# EnergyPlus outputs (added in Phase 2)
+*.eso
+*.mtr
+*.err
+*.audit
+*.bnd
+*.end
+*.mtd
+*.mdd
+*.rdd
+*.shd
+*.csv
+*.audit
+*.dxf
+*.eio
+*.htm
+*.tab
+*.xml
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
